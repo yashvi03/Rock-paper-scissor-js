@@ -3,8 +3,9 @@ let humanScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
-  console.log(options[Math.floor(Math.random() * options.length)]);
-  return options[Math.floor(Math.random() * options.length)];
+  let compChoice = options[Math.floor(Math.random() * options.length)];
+  console.log(compChoice);
+  return compChoice;
 }
 
 function getHumanChoice() {
@@ -13,22 +14,26 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    console.log("It's a draw!");
-  } else if (
-    (humanChoice === "rock" && computerChoice === "paper") ||
-    (humanChoice === "paper" && computerChoice === "scissor") ||
-    (humanChoice === "scissor" && computerChoice === "rock")
+  if (
+    (humanChoice == "rock" && computerChoice == "paper") ||
+    (humanChoice == "paper" && computerChoice == "scissor") ||
+    (humanChoice == "scissor" && computerChoice == "rock")
   ) {
     console.log("You lose this round :(");
     computerScore += 1;
     console.log(humanScore);
     console.log(computerScore);
-  } else {
+  } else if (
+    (humanChoice == "paper" && computerChoice == "rock") ||
+    (humanChoice == "scissor" && computerChoice == "paper") ||
+    (humanChoice == "rock" && computerChoice == "scissor")
+  ) {
     console.log("You win this round!!");
     humanScore += 1;
     console.log(humanScore);
     console.log(computerScore);
+  } else {
+    console.log("It's a draw!");
   }
 }
 
@@ -44,7 +49,7 @@ function playGame() {
   } else if (computerScore > humanScore) {
     console.log("You lost. Better luck next time");
   } else {
-    console.log("Thats a draw! ou both have equal scores.");
+    console.log("Thats a draw! you both have equal scores.");
   }
 }
 
